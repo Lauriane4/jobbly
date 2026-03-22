@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 from pydantic import BaseModel, EmailStr
 from database import get_db
@@ -52,22 +53,11 @@ def register(user_data: UserRegister, db: Session = Depends(get_db)):
 # Login
 @router.post("/login")
 def login(user_data: UserLogin, db: Session = Depends(get_db)):
-    # Chercher l'utilisateur
     user = db.query(models.User).filter(
         models.User.email == user_data.email
     ).first()
-
-    # Vérifier email + mot de passe
     if not user or not security.verify_password(user_data.password, user.hashed_password):
-        raise HTTPException(
-            status_code=401,
-            detail="Email ou mot de passe incorrect"
-        )
+        raise HTTPException(status_code=401, detail="Email ou mot de passe incorrect")
 
-    # Générer le token
     token = security.create_access_token({"sub": user.email})
-
-    return {
-        "access_token": token,
-        "token_type": "bearer"
-    }
+    return {"access_token": token, "token_type": "bearer"}
