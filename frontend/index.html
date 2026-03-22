@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jobbly — Suis tes candidatures</title>
+    <link rel="icon" type="image/png" href="favicon.ico">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -26,21 +27,21 @@
 
         <!-- Formulaire login -->
         <form id="form-login">
-            <input type="email" placeholder="Email" required />
-            <input type="password" placeholder="Mot de passe" required />
+            <input type="email" id="email-login" placeholder="Email" required />
+            <input type="password" id="password-login" placeholder="Mot de passe" required />
             <button type="submit" class="btn-primary">Se connecter</button>
         </form>
 
         <!-- Formulaire register -->
         <form id="form-register" style="display: none;">
-            <input type="text" placeholder="Prénom" required />
-            <input type="email" placeholder="Email" required />
-            <input type="password" placeholder="Mot de passe" required />
-            <input type="password" placeholder="Confirmer le mot de passe" required />
+            <input type="text" id="firstname" placeholder="Prénom" required />
+            <input type="email" id="email-register" placeholder="Email" required />
+            <input type="password" id="password-register" placeholder="Mot de passe" required />
+            <input type="password" id="password-confirm" placeholder="Confirmer le mot de passe" required />
             <button type="submit" class="btn-primary">Créer mon compte</button>
         </form>
 
     </div>
-    <script src="auth.js"></script>
+    <script src="authentification.js"></script>
 </body>
 </html>

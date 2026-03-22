@@ -52,23 +52,12 @@ def register(user_data: UserRegister, db: Session = Depends(get_db)):
 
 # Login
 @router.post("/login")
-def login(
-    form_data: OAuth2PasswordRequestForm = Depends(),
-    db: Session = Depends(get_db)
-):
+def login(user_data: UserLogin, db: Session = Depends(get_db)):
     user = db.query(models.User).filter(
-        models.User.email == form_data.username
+        models.User.email == user_data.email
     ).first()
-
-    if not user or not security.verify_password(form_data.password, user.hashed_password):
-        raise HTTPException(
-            status_code=401,
-            detail="Email ou mot de passe incorrect"
-        )
+    if not user or not security.verify_password(user_data.password, user.hashed_password):
+        raise HTTPException(status_code=401, detail="Email ou mot de passe incorrect")
 
     token = security.create_access_token({"sub": user.email})
-
-    return {
-        "access_token": token,
-        "token_type": "bearer"
-    }
+    return {"access_token": token, "token_type": "bearer"}
