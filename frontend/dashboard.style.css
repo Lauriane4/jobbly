@@ -1,6 +1,7 @@
 /* ===== DASHBOARD ===== */
 
 .dashboard-body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #F3EEFF;
     align-items: flex-start;
     justify-content: flex-start;
