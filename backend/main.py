@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from database import engine
 import models
-from routers import authentification, application
+from routers import authentification, application,export
 
 # Créer les tables dans la base de données
 models.Base.metadata.create_all(bind=engine)
@@ -18,6 +18,7 @@ app = FastAPI(
 # Inclure les routes
 app.include_router(authentification.router)
 app.include_router(application.router)
+app.include_router(export.router)
 
 
 # CORS — permet au frontend de parler au backend
