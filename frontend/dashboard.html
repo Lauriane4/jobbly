@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jobbly — Dashboard</title>
     <link rel="stylesheet" href="dashboard.style.css">
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
 <body class="dashboard-body">
 
@@ -47,7 +48,10 @@
         <!-- Header liste -->
         <div class="list-header">
             <h2>Mes candidatures</h2>
+            <div style="display: flex; gap: 8px;">
+            <button class="btn-export" onclick="exportExcel()">⬇ Exporter Excel</button>
             <button class="btn-orange" id="btn-add" onclick="openModal()">+ Ajouter</button>
+        </div>
         </div>
 
         <!-- Liste des candidatures -->
