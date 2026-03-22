@@ -1,5 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from database import engine
+import models
+from routers import authentification
+
+# Créer les tables dans la base de données
+models.Base.metadata.create_all(bind=engine)
+
 
 app = FastAPI(
     title="Jobbly API",
@@ -15,6 +22,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+# Routes
+app.include_router(authentification.router)
 
 @app.get("/")
 def root():
