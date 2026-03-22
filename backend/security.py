@@ -6,9 +6,10 @@ from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 from database import get_db
 import models
+import os
 
 # Configuration
-SECRET_KEY = "jobbly-secret-key-change-in-production"
+SECRET_KEY = os.getenv("SECRET_KEY", "jobbly-secret-key-change-in-production")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 24 heures
 
