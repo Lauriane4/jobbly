@@ -182,6 +182,21 @@
     color: #FF4D00;
 }
 
+.btn-export {
+    background: white;
+    border: 0.5px solid #7B2FFF;
+    color: #7B2FFF;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-export:hover {
+    background: #F3EEFF;
+}
+
 /* Modal */
 .modal-overlay {
     position: fixed;
