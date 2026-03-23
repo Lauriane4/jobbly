@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8000";
+const API_URL = window.ENV_API_URL || "https://jobbly-bbhl.onrender.com"; //|| "http://localhost:8000";
 
 function showLogin() {
     document.getElementById('form-login').style.display = 'flex';
